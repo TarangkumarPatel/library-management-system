@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Card, Form, Alert, Button } from "react-bootstrap";
+import { Card, Form, Alert, Button, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { registerUser } from "../lib/authenticate";
+import Link from "next/link";
 
 export default function Register() {
   const [user, setUser] = useState("");
@@ -42,67 +43,70 @@ export default function Register() {
   }
 
   return (
-    <>
-      <Card bg="light">
-        <Card.Body>
-          <h2>Register</h2>Enter your information below to create a new account:
-        </Card.Body>
-      </Card>
-      <br />
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>User:</Form.Label>
-          <Form.Control
-            type="text"
-            value={user}
-            id="userName"
-            name="userName"
-            onChange={(e) => setUser(e.target.value)}
-          />
-        </Form.Group>
-        <br />
-        <Form.Group>
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            id="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <br />
-        <Form.Group>
-          <Form.Label>Confirm Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={password2}
-            id="password2"
-            name="password2"
-            onChange={(e) => setPassword2(e.target.value)}
-          />
-        </Form.Group>
+    <Row className="justify-content-center fade-in-up">
+      <Col md={8} lg={6} xl={5}>
+        <Card className="hero-header mb-4 text-center">
+          <Card.Body>
+            <span className="eyebrow mb-3">Join us</span>
+            <h1 className="display-6 gradient-text mt-3 mb-2">Register</h1>
+            <p className="lead mb-0">Create an account to start saving your favourite books.</p>
+          </Card.Body>
+        </Card>
 
-        {warning && (
-          <>
-            <br />
-            <Alert variant="danger">{warning}</Alert>
-          </>
-        )}
-        {success && (
-          <>
-            <br />
-            <Alert variant="success">
-              User created successfully! Redirecting to login...
-            </Alert>
-          </>
-        )}
+        <Card className="p-4">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>User</Form.Label>
+              <Form.Control
+                type="text"
+                value={user}
+                id="userName"
+                name="userName"
+                onChange={(e) => setUser(e.target.value)}
+              />
+            </Form.Group>
 
-        <br />
-        <Button variant="primary" className="pull-right" type="submit">
-          Register
-        </Button>
-      </Form>
-    </>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                id="password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password2}
+                id="password2"
+                name="password2"
+                onChange={(e) => setPassword2(e.target.value)}
+              />
+            </Form.Group>
+
+            {warning && (
+              <Alert variant="danger" className="mb-3">{warning}</Alert>
+            )}
+            {success && (
+              <Alert variant="success" className="mb-3">
+                User created successfully! Redirecting to login...
+              </Alert>
+            )}
+
+            <Button variant="primary" type="submit" className="w-100 py-2 fs-5">
+              Register
+            </Button>
+
+            <p className="text-center mt-4 mb-0 text-muted-soft">
+              Already have an account? <Link href="/login">Login</Link>
+            </p>
+          </Form>
+        </Card>
+      </Col>
+    </Row>
   );
 }

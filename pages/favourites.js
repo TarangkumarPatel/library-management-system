@@ -21,11 +21,11 @@ export default function Favourites() {
     }
     return (
         <>
-            <PageHeader 
-                text="Favourite Books" 
-                subtext="Here are all the your favourite books." 
+            <PageHeader
+                text="Favourite Books"
+                subtext="Here are all the your favourite books."
             />
-            <Row className="gy-4">
+            <Row className="gy-4 fade-in-up delay-1">
                 {favouritesList.map((workId) => (
                     <Col lg={3} md={6} key={workId}>
                         <BookCard workId={workId} />

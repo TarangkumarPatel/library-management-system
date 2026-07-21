@@ -61,26 +61,25 @@ export default function About(props) {
     return (
         <>
             <PageHeader text="About the Developer" subtext="Tarangkumar Janakkumar Patel" />
-            <Card>
+            <Card className="p-4 p-md-5 mb-4 fade-in-up delay-1">
                 <Card.Body>
                     <p>
                         I am a Computer Programmer based in Toronto with a Diploma in Computer Programming from Seneca Polytechnic.
                         Currently, I am pursuing my Honors Bachelors of Software Development from Seneca.
                     </p>
                     <p>
-                        Driven by a strong interest in Full Stack Development, my journey is defined by a love for solving complex problems and a continuous drive to master modern web technologies. 
+                        Driven by a strong interest in Full Stack Development, my journey is defined by a love for solving complex problems and a continuous drive to master modern web technologies.
                         Currently, I am focused on building responsive, user-centric applications using tools like Next.js and React-Bootstrap.
                     </p>
-                    <p>
-                        The book featured here is <strong>{props.book.title}</strong> by <strong> Dr. A.P.J Abdul Kalam</strong> mentioning his expeiences with s spiritual leader <strong>H.D.H Pramukh Swami Maharaj. </strong>. 
-                        I chose this book because it beautifully bridges the worlds of <strong>Science and Spirituality</strong>. 
-                        It documents the unique friendship between a top scientist and Pramukh Swami Maharaj, 
+                    <p className="mb-0">
+                        The book featured here is <strong>{props.book.title}</strong> by <strong> Dr. A.P.J Abdul Kalam</strong> mentioning his expeiences with s spiritual leader <strong>H.D.H Pramukh Swami Maharaj. </strong>.
+                        I chose this book because it beautifully bridges the worlds of <strong>Science and Spirituality</strong>.
+                        It documents the unique friendship between a top scientist and Pramukh Swami Maharaj,
                         illustrating how technology and leadership can be guided by universal human values.
                     </p>
                 </Card.Body>
             </Card>
-            <br />
             <BookDetails book = {props.book} workId={props.workId} showFavouriteBtn={false} />
         </>
     );
-}  
+}

@@ -1,14 +1,17 @@
-import { Container } from 'react-bootstrap'; 
+import { Container } from 'react-bootstrap';
 import MainNav from './MainNav';
+import Footer from './Footer';
 
 export default function Layout(props){
     return (
     <>
+        <div className="bg-orbs" aria-hidden="true" />
         <MainNav /> {/*Imports MainNav.js code and displays Navigation bar at the top of the page */}
-        <br />
-        <Container> {/*to center the content a prebuilt bootstrap class like a div with class "container" and some margin */}
+        <Container as="main" className="pb-5">
             {props.children}
         </Container>
-        <br />
+        <Container>
+            <Footer />
+        </Container>
     </>);
 }

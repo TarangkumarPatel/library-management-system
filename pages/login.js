@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Card, Form, Alert, Button } from "react-bootstrap";
+import { Card, Form, Alert, Button, Row, Col } from "react-bootstrap";
 import { useAtom } from "jotai";
 import { favouritesAtom } from "../store";
 import { authenticateUser } from "../lib/authenticate";
 import { getFavourites } from "../lib/userData";
+import Link from "next/link";
 
 export default function Login(props) {
   // 1. Setup state for the form inputs and error messages
@@ -32,7 +33,7 @@ export default function Login(props) {
       // Update the favourites atom with data from the back end
       await updateAtom();
 
-      // Redirect to the home page 
+      // Redirect to the home page
       router.push("/");
     } catch (err) {
       // Display the error in our Alert component
@@ -41,49 +42,54 @@ export default function Login(props) {
   }
 
   return (
-    <>
-      <Card bg="light">
-        <Card.Body>
-          <h2>Login</h2>Enter your login information below:
-        </Card.Body>
-      </Card>
-      <br />
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>User:</Form.Label>
-          <Form.Control
-            type="text"
-            id="userName"
-            name="userName"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          />
-        </Form.Group>
-        <br />
-        <Form.Group>
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+    <Row className="justify-content-center fade-in-up">
+      <Col md={8} lg={6} xl={5}>
+        <Card className="hero-header mb-4 text-center">
+          <Card.Body>
+            <span className="eyebrow mb-3">Welcome back</span>
+            <h1 className="display-6 gradient-text mt-3 mb-2">Login</h1>
+            <p className="lead mb-0">Enter your credentials to access your favourites.</p>
+          </Card.Body>
+        </Card>
 
-        {/* 5. Implement the Alert to show errors if they exist */}
-        {warning && (
-          <>
-            <br />
-            <Alert variant="danger">{warning}</Alert>
-          </>
-        )}
+        <Card className="p-4">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>User</Form.Label>
+              <Form.Control
+                type="text"
+                id="userName"
+                name="userName"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+              />
+            </Form.Group>
 
-        <br />
-        <Button variant="primary" className="pull-right" type="submit">
-          Login
-        </Button>
-      </Form>
-    </>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            {warning && (
+              <Alert variant="danger" className="mb-3">{warning}</Alert>
+            )}
+
+            <Button variant="primary" type="submit" className="w-100 py-2 fs-5">
+              Login
+            </Button>
+
+            <p className="text-center mt-4 mb-0 text-muted-soft">
+              Don&apos;t have an account? <Link href="/register">Register</Link>
+            </p>
+          </Form>
+        </Card>
+      </Col>
+    </Row>
   );
 }
