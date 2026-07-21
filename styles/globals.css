@@ -685,6 +685,12 @@ main.container {
   color: var(--accent-2);
 }
 
+.site-footer .footer-copyright {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
 /* =========================================================================
    Animations
    ========================================================================= */
