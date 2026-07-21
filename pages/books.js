@@ -50,7 +50,7 @@ export default function Books() {
     <>
       <PageHeader text="Search Results" subtext={subtext || "All Books"} />
 
-      <div className="table-wrap fade-in-up delay-1">
+      <div className="table-wrap fade-in-up">
         <Table striped hover className="mb-0">
           <thead>
             <tr>
@@ -59,7 +59,7 @@ export default function Books() {
               <th className="text-end">&nbsp;</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="stagger-grid">
             {isLoading &&
               Array.from({ length: 5 }).map((_, i) => (
                 <tr key={i}>

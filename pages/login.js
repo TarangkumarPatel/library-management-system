@@ -42,17 +42,15 @@ export default function Login(props) {
   }
 
   return (
-    <Row className="justify-content-center fade-in-up">
+    <Row className="justify-content-center">
       <Col md={8} lg={6} xl={5}>
-        <Card className="hero-header mb-4 text-center">
-          <Card.Body>
-            <span className="eyebrow mb-3">Welcome back</span>
-            <h1 className="display-6 gradient-text mt-3 mb-2">Login</h1>
-            <p className="lead mb-0">Enter your credentials to access your favourites.</p>
-          </Card.Body>
-        </Card>
+        <Card className="auth-card p-4 p-md-5 fade-in-up">
+          <div className="text-center mb-4">
+            <span className="eyebrow mb-2">Welcome back</span>
+            <h1 className="h2 gradient-text mt-2 mb-1">Login</h1>
+            <p className="text-muted-soft mb-0">Enter your credentials to access your favourites.</p>
+          </div>
 
-        <Card className="p-4">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>User</Form.Label>

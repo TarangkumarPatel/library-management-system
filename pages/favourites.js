@@ -25,7 +25,7 @@ export default function Favourites() {
                 text="Favourite Books"
                 subtext="Here are all the your favourite books."
             />
-            <Row className="gy-4 fade-in-up delay-1">
+            <Row className="gy-4 stagger-grid">
                 {favouritesList.map((workId) => (
                     <Col lg={3} md={6} key={workId}>
                         <BookCard workId={workId} />

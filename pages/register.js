@@ -43,17 +43,15 @@ export default function Register() {
   }
 
   return (
-    <Row className="justify-content-center fade-in-up">
+    <Row className="justify-content-center">
       <Col md={8} lg={6} xl={5}>
-        <Card className="hero-header mb-4 text-center">
-          <Card.Body>
-            <span className="eyebrow mb-3">Join us</span>
-            <h1 className="display-6 gradient-text mt-3 mb-2">Register</h1>
-            <p className="lead mb-0">Create an account to start saving your favourite books.</p>
-          </Card.Body>
-        </Card>
+        <Card className="auth-card p-4 p-md-5 fade-in-up">
+          <div className="text-center mb-4">
+            <span className="eyebrow mb-2">Join us</span>
+            <h1 className="h2 gradient-text mt-2 mb-1">Register</h1>
+            <p className="text-muted-soft mb-0">Create an account to start saving your favourite books.</p>
+          </div>
 
-        <Card className="p-4">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>User</Form.Label>

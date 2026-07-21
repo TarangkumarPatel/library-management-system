@@ -234,6 +234,24 @@ a:hover {
   margin: 0 auto;
 }
 
+/* Compact auth card (login/register) -------------------------------------- */
+.auth-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  animation: gradientShift 8s ease infinite;
+}
+
 /* =========================================================================
    Navbar
    ========================================================================= */
@@ -715,6 +733,48 @@ main.container {
 .fade-in-up.delay-1 { animation-delay: 0.06s; }
 .fade-in-up.delay-2 { animation-delay: 0.12s; }
 .fade-in-up.delay-3 { animation-delay: 0.18s; }
+
+/* Route (page) transition -------------------------------------------------- */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.994); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.route-fade {
+  animation: pageIn 0.45s var(--ease) both;
+}
+
+.route-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  z-index: 2000;
+  opacity: 0;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
+  transition: width 0.25s var(--ease), opacity 0.3s var(--ease);
+}
+
+.route-progress.is-visible {
+  opacity: 1;
+}
+
+/* Staggered grid / list entrance ------------------------------------------- */
+.stagger-grid > * {
+  animation: fadeInUp 0.5s var(--ease) both;
+}
+.stagger-grid > *:nth-child(1) { animation-delay: 0.03s; }
+.stagger-grid > *:nth-child(2) { animation-delay: 0.08s; }
+.stagger-grid > *:nth-child(3) { animation-delay: 0.13s; }
+.stagger-grid > *:nth-child(4) { animation-delay: 0.18s; }
+.stagger-grid > *:nth-child(5) { animation-delay: 0.23s; }
+.stagger-grid > *:nth-child(6) { animation-delay: 0.28s; }
+.stagger-grid > *:nth-child(7) { animation-delay: 0.33s; }
+.stagger-grid > *:nth-child(8) { animation-delay: 0.38s; }
+.stagger-grid > *:nth-child(n+9) { animation-delay: 0.43s; }
 
 @media (max-width: 767px) {
   .hero-header {
